@@ -1,3 +1,7 @@
+// HW2 - Enoch Jones - IS 542 - Jan 5, 2022
+// To see the web interface visit https://jenochjones.github.io/IS542/hw2.html
+
+// Function to find the ith fibonacci number given i
 function fibonacciNumbers() {
   let i = parseInt(document.getElementById('fib-input').value);
   let numOne = 0;
@@ -13,17 +17,23 @@ function fibonacciNumbers() {
   document.getElementById('fib-answer').innerText = numThree.toString();
 }
 
+// Function to find the ith factorial given i
 function factorials() {
   let i = parseInt(document.getElementById('fac-input').value);
   let v = i - 1;
   let fac = i;
-  for (let r = 0; r < v; r++) {
-    i -= 1;
-    fac *= i;
+  if (i === 0) {
+    fac = 1;
+  } else {
+    for (let r = 0; r < v; r++) {
+      i -= 1;
+      fac *= i;
+    }
   }
   document.getElementById('fac-answer').innerText = fac.toString();
 }
 
+// Function to find the sum of all the numbers between two numbers
 function findSums() {
   let sumOne = parseInt(document.getElementById('sum-one').value);
   let sumTwo = parseInt(document.getElementById('sum-two').value);
@@ -34,6 +44,7 @@ function findSums() {
   document.getElementById('sum-answer').innerText = sumTotal.toString();
 }
 
+// Function to give the coins needed to equal a given number of cents
 function numCoins() {
   let cents = parseInt(document.getElementById('cents-input').value);
   let quarters = Math.floor(cents / 25);

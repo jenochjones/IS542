@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JEJ</title>
+
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="stylesheet" href="public/css/finalproject.css">
+  <script type="text/javascript" src="public/js/finalproject.js"></script>
+</head>
+<body>
+  <div class="top-nav-bar">
+    <ul><a href="index.html">Home</a></ul>
+    <ul><a href="hw2.html">Home Work 2</a></ul>
+    <ul><a href="hw3.html">Home Work 3</a></ul>
+    <ul><a href="finalproject.html">Final Project</a></ul>
+  </div>
+  <div id="final-full">
+    <div id="final-left">
+      <div class="format-div">
+        <label for="solve-sel">Solve For </label>
+        <select id="solve-sel">
+          <option value="wse">Water Surface Elevation</option>
+          <option value="n">Manning's Roughness</option>
+          <option value="flow">Flow</option>
+          <option value="slope">Channel Slope</option>
+        </select>
+      </div>
+      <div class="format-div">
+        <label for="wse-slider">Water Surface Elevation</label>
+        <input id="wse-slider" type="range" min="0" max="100" value="5" onchange="ChangeWSESlider()">
+        <input id="wse-text" type="number" value="5" onchange="ChangeWSEText()">
+      </div>
+      <div class="format-div">
+        <label for="n-slider">Manning's Roughness</label>
+        <input id="n-slider" type="range" min="0" max="1" value="0.013" onchange="ChangeNSlider()">
+        <input id="n-text" type="number" value="0.013" onchange="ChangeNText()">
+      </div>
+      <div class="format-div">
+        <label for="flow-slider">Flow</label>
+        <input id="flow-slider" type="range" min="0" max="100000" value="50" onchange="ChangeFlowSlider()">
+        <input id="flow-text" type="number" value="50" onchange="ChangeFlowText()">
+      </div>
+      <div class="format-div">
+        <label for="slope-slider">Slope</label>
+        <input id="slope-slider" type="range" min="0" max="1" value="0.0001" onchange="ChangeSlopeSlider()">
+        <input id="slope-text" type="number" value="0.0001" onchange="ChangeSlopeText()">
+      </div>
+      <div class="format-div">
+        <label for="units">Units</label>
+        <select id="units" onchange="ChangeUnits()">
+          <option value="0">U.S.</option>
+          <option value="1">SI</option>
+        </select>
+      </div>
+    </div>
+    <div id="final-right">
+
+    </div>
+  </div>
+
+</body>
+</html>
