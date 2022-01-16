@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JEJ</title>
+
+  <link rel="stylesheet" href="public/css/main.css">
+  <link rel="stylesheet" href="public/css/hw4.css">
+  <script type="text/javascript" src="public/js/hw4.js"></script>
+</head>
+<body>
+  <div class="top-nav-bar">
+    <ul><a href="index.html">Home</a></ul>
+    <ul><a href="hw2.html">Home Work 2</a></ul>
+    <ul><a href="hw3.html">Home Work 3</a></ul>
+    <ul><a href="hw4.html">Home Work 4</a></ul>
+    <ul><a href="finalproject.html">Final Project</a></ul>
+  </div>
+  <div id="hw4-table">
+    <div id="form-border">
+      <div id="inner-div">
+        <span>
+          <label for="form-name">Name</label>
+          <input id="form-name" type="text" onchange="checkForm.isNonEmpty(this.value, 'name')">
+        </span>
+        <span>
+          <label for="form-email">Email</label>
+          <input id="form-email" type="text" onchange="checkForm.isValidEmail(this.value)">
+        </span>
+        <span>
+          <label for="form-pass">Password</label>
+          <img class="info-icon" src="public/images/info.png" onmouseover="showInfo()" onmouseleave="hideInfo()">
+          <input id="form-pass" type="text" onchange="checkForm.matchesRegex(this.value, '^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$')">
+        </span>
+        <span>
+          <label for="form-pass2">Re-enter Password</label>
+          <input id="form-pass2" type="text" onchange="checkForm.matchesString(this.value, document.getElementById('form-pass').value)">
+        </span>
+        <span>
+          <label for="form-com">Comment (max 100 char)</label>
+          <input id="form-com" type="text">
+        </span>
+        <span class="form-span">
+          <label for="form-quant">Desired Quantity (between 20 and 56)</label>
+          <input id="form-quant" type="text" style="width: 20px" onchange="checkForm.isInRange(this.value)">
+        </span>
+        <button onclick="submitButton()">SUBMIT</button>
+        <div id="info-div">
+          <p>Please Crate a Password (at least 8 characters, at least 1 number, lower and uppercase letters, and a special character)</p> <!--"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"-->
+        </div>
+      </div>
+      <div id="validate-div"></div>
+    </div>
+  </div>
+</body>
+</html>

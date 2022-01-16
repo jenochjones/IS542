@@ -13,7 +13,42 @@
     <ul><a href="index.html">Home</a></ul>
     <ul><a href="hw2.html">Home Work 2</a></ul>
     <ul><a href="hw3.html">Home Work 3</a></ul>
+    <ul><a href="hw4.html">Home Work 4</a></ul>
     <ul><a href="finalproject.html">Final Project</a></ul>
+  </div>
+  <div id="hw3-table">
+    <table>
+      <tr>
+        <th>Input</th>
+        <th>Check for</th>
+        <th class="input-range">Range</th>
+        <th class="reg-exp">Regular Expression</th>
+        <th>Answer</th>
+        <th>Submit</th>
+      </tr>
+      <tr>
+        <td>Enter String <input id="string-input" type="text"></td>
+        <td>
+          <select id="select-check" onchange="fixTable()">
+            <option value="isNumeric">is Numeric</option>
+            <option value="isInteger">is Integer</option>
+            <option value="isNegativeInteger">is a Negative Integer</option>
+            <option value="isPositiveInteger">is a Positive Integer</option>
+            <option value="isNonNegInteger">is Non Negative Integer</option>
+            <option value="isInRange">is in Range</option>
+            <option value="isValidEmail">is a Valid Email</option>
+            <option value="isNonEmpty">is not Empty</option>
+            <option value="lengthIsInRange">Length is in Range</option>
+            <option value="matchesRegex">Matches Regex</option>
+          </select>
+        </td>
+        <td class="input-range"><input type="number" value="1" id="first-num" class="num-input"> &#160;to&#160; <input type="number" value="10" id="second-num" class="num-input"></td>
+        <td class="reg-exp"><input type="text" id="reg-input"></td>
+        <td id="answer"></td>
+        <td><button onclick="checkString()">Submit</button></td>
+        <td><button onclick="checkMyString.reset(); isValid = checkMyString.isValid;">Reset</button></td>
+      </tr>
+    </table>
   </div>
 
 </body>
