@@ -1,6 +1,5 @@
-// HW4 - Enoch Jones - IS 542 - Jan 11, 2022
+// HW4 - Enoch Jones - IS 542 - Jan 17, 2022
 // To see the web interface visit https://jenochjones.github.io/IS542/hw4.html
-
 
 "use strict";
 
