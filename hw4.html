@@ -37,8 +37,8 @@
           <input id="form-pass2" type="text" onchange="checkForm.matchesString(this.value, document.getElementById('form-pass').value)">
         </span>
         <span>
-          <label for="form-com">Comment (max 100 char)</label>
-          <input id="form-com" type="text">
+          <label for="form-com">Comment (max 10 char)</label>
+          <input id="form-com" type="text" onchange="checkForm.lengthIsInRange(this.value)">
         </span>
         <span class="form-span">
           <label for="form-quant">Desired Quantity (between 20 and 56)</label>
@@ -49,7 +49,9 @@
           <p>Please Crate a Password (at least 8 characters, at least 1 number, lower and uppercase letters, and a special character)</p> <!--"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"-->
         </div>
       </div>
-      <div id="validate-div"></div>
+      <div id="validate-div">
+        <p id="validate-p"></p>
+      </div>
     </div>
   </div>
 </body>

@@ -75,12 +75,15 @@ table, th, td {
 
 #validate-div {
     width: 400px;
-    height: 50px;
+    height: auto;
+    max-height: 200px;
+    overflow-y: scroll;
     background-color: #32322c;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    white-space: pre;
 }
 
 .info-icon {
