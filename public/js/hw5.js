@@ -6,10 +6,13 @@ const Scriptures = (function () {
   /*---------------------------------------------------------------------
    *                      Private Variables
    */
+  let books;
+  let volumes;
   /*---------------------------------------------------------------------
    *                      Private Methods and Declarations
    */
   let ajax;
+  let cashBooks;
   let init;
   /*---------------------------------------------------------------------
    *                      Private Methods
@@ -17,7 +20,7 @@ const Scriptures = (function () {
   ajax = function (url, successCallback, failureCallback) {
     let request = new XMLHttpRequest();
 
-    request.open('GET', '/my/url', true);
+    request.open('GET', url, true);
     request.onload = function () {
 
       if (this.status >= 200 && this.status < 400) {
@@ -38,16 +41,40 @@ const Scriptures = (function () {
     request.send();
   }
 
+  cashBooks = function (callback) {
+    volumes.forEach(volume => {
+      let volumeBooks = [];
+      let bookId = volume.minBookId;
+
+      while (bookId <= volume.maxBookId) {
+        volumeBooks.push(books[bookId]);
+        bookId += 1;
+      }
+      volume.books = volumeBooks;
+    });
+    if (typeof callback === "function") {
+      callback();
+    }
+  }
+
   init = function (callback) {
+    let booksLoaded = false;
+    let volumesLoaded = false;
     ajax("https://scriptures.byu.edu/mapscrip/model/books.php",
             data => {
-              console.log("Loaded books from server");
-              console.log(data);
+              books = data;
+              booksLoaded = true;
+              if (volumesLoaded) {
+                cashBooks(callback);
+              }
             })
     ajax("https://scriptures.byu.edu/mapscrip/model/volumes.php",
             data => {
-              console.log("Loaded volumes from server");
-              console.log(data);
+              volumes = data;
+              volumesLoaded = true;
+              if (booksLoaded) {
+                cashBooks(callback);
+              }
             })
   };
   /*---------------------------------------------------------------------

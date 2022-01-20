@@ -5,3 +5,34 @@ body {
 p {
     color: white;
 }
+
+#main {
+    display: flex;
+    flex-direction: column;
+}
+
+#secondary {
+    display: flex;
+    flex-direction: row;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    background-color: #7a5d37;
+    color: white;
+}
+
+#navigator {
+    height: 100%;
+    width: 25%;
+    background-color: blue;
+}
+
+#map {
+    height: 100%;
+    width: 75%;
+    background-color: yellow;
+}
