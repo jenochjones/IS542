@@ -1,0 +1,62 @@
+body {
+    background-color: #252736;
+}
+
+p {
+    color: white;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+#secondary {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+    background-color: #7a5d37;
+    color: white;
+}
+
+#navigator {
+    height: 100%;
+    width: 25%;
+    background-color: #7a5d99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    padding: 20px 0px 300px 0px;
+}
+
+#map {
+    height: 100%;
+    width: 75%;
+    background-color: #7a5000;
+}
+
+.btn-volume {
+    width: 80%;
+    height: 50px;
+    margin-top: 30px;
+}
+
+.btn-book {
+    width: 80%;
+    min-height: 50px;
+    margin-top: 30px;
+}

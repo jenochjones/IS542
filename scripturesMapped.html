@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JEJ</title>
@@ -8,10 +9,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="public/css/main.css">
-  <link rel="stylesheet" href="public/css/hw5.css">
-  <script type="text/javascript" src="public/js/hw5.js"></script>
+  <link rel="stylesheet" href="public/css/scripturesMapped.css">
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAth9fKCMU_ctacq7mcoN2ToGMq2BJqlIY&callback=initMap&v=weekly" async></script>
+  <script type="text/javascript" src="public/js/scripturesMapped.js"></script>
+
 </head>
-<body>
+
+<body onload="">
+
   <div class="top-nav-bar">
     <ul><a href="index.html">Home</a></ul>
     <ul><a href="hw2.html">Home Work 2</a></ul>
@@ -28,12 +34,27 @@
     </div>
     <div id="secondary">
       <div id="navigator">
-        <h1>Navigator</h1>
       </div>
       <div id="map">
-        <h1>Map</h1>
       </div>
     </div>
   </div>
+
 </body>
+
+<script type="text/javascript">
+  function ready(readyListener) {
+    if (document.readyState != 'loading'){
+      readyListener();
+    } else {
+      document.addEventListener('DOMContentLoaded', readyListener);
+    }
+  }
+
+  ready(function (){
+    Scriptures.init(() => { console.log('Initialized'); });
+    window.addEventListener("hashchange", Scriptures.onHashChanged);
+  })
+</script>
+
 </html>
