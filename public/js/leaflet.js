@@ -1,20 +1,5 @@
 "use strict";
 
-function ready(readyListener) {
-    if (document.readyState !== "loading") {
-        readyListener();
-    } else {
-        document.addEventListener("DOMContentLoaded", readyListener);
-    }
-}
-
-ready(function () {
-    MAP_PACKAGE.setUpMap(() => {
-        console.log("Map Created");
-    });
-});
-
-"use strict";
 const MAP_PACKAGE = (function () {
     /*---------------------------------------------------------------------
      *                      Constants
@@ -32,6 +17,7 @@ const MAP_PACKAGE = (function () {
     let createDrawingLayers;
     let createGeojosnMarker;
     let createMapMarker;
+    let createWMSLayer;
     let getMarkerGeojson;
     let mapMarkerLayer;
     let geojsonMarkerLayer;
@@ -60,6 +46,8 @@ const MAP_PACKAGE = (function () {
     };
 
     createMapMarker = function (drawEvent) {
+        console.log(mapMarkerLayer);
+        console.log(geojsonMarkerLayer);
         if (drawEvent.layer !== undefined) {
             mapMarkerLayer.clearLayers();
             geojsonMarkerLayer.clearLayers();
@@ -69,13 +57,52 @@ const MAP_PACKAGE = (function () {
         }
     };
 
+    createWMSLayer = function (layernameUI) {
+        // , wmsURL, variable, range, style // Temporary values for testing
+        let wmsURL = "https://thredds-jumbo.unidata.ucar.edu/thredds/wms/grib/NCEP/GFS/Global_0p25deg/Best";
+        let variable = "Categorical_Rain_surface";
+        let range = "0:5";
+        let style = "boxfill/rainbow";
+        ///////////////////////////////
+        const proxyURL = "ADD PROXY URL HERE";
+        let proxyWMSURL;
+        let wmsLayer;
+        let wmsTimeDimensionLayer;
+        try {
+            proxyWMSURL = `${proxyURL}?main_url=${encodeURIComponent(wmsURL)}`;
+            wmsLayer = L.tileLayer.wms(proxyWMSURL, {
+                BGCOLOR: '0x000000',
+                colorscalerange: range,
+                crossOrigin: true,
+                dimension: 'time',
+                format: 'image/png',
+                layers: variable,
+                transparent: true,
+                styles: style,
+                useCache: true
+            });
+            wmsTimeDimensionLayer = L.timeDimension.layer.wms(wmsLayer, {
+                cacheForward: 200,
+                name: `${layernameUI}_check`,
+                updateTimeDimension: true,
+                updateTimeDimensionMode: 'replace',
+                requestTimefromCapabilities: false,
+            });
+            //layers_dict[`${layernameUI}_check`] = wmsTimeDimensionLayer;
+            return wmsTimeDimensionLayer.addTo(mapObj);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     getMarkerGeojson = function () {
-        debugger
-        if (geojsonMarkerLayer.length > 0 && mapMarkerLayer.length <= 0) {
-            console.log("geojson")
-        } else if (mapMarkerLayer.toGeoJSON().length > 0 && geojsonMarkerLayer.toGeoJSON().length <= 0) {
-            console.log("marker")
+        if (geojsonMarkerLayer.toGeoJSON().features.length > 0 && mapMarkerLayer.toGeoJSON().features.length <= 0) {
+            return geojsonMarkerLayer.toGeoJSON();
+        } else if (mapMarkerLayer.toGeoJSON().features.length > 0 && geojsonMarkerLayer.toGeoJSON().features.length <= 0) {
+            return mapMarkerLayer.toGeoJSON();
         } else {
+            //NOTIFY
+            console.log("No Features On Map");
             return;
         }
     };
@@ -147,13 +174,10 @@ const MAP_PACKAGE = (function () {
         }
     };
 
-    /*---------------------------------------------------------------------
-     *                      Event Listeners
-     */
-
     return {
         createMapMarker,
         createGeojosnMarker,
+        createWMSLayer,
         getMarkerGeojson,
         setUpMap
     };
