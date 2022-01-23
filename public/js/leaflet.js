@@ -70,7 +70,7 @@ const MAP_PACKAGE = (function () {
         let wmsTimeDimensionLayer;
         try {
             proxyWMSURL = `${proxyURL}?main_url=${encodeURIComponent(wmsURL)}`;
-            wmsLayer = L.tileLayer.wms(proxyWMSURL, {
+            wmsLayer = L.tileLayer.wms(wmsURL, {
                 BGCOLOR: '0x000000',
                 colorscalerange: range,
                 crossOrigin: true,
