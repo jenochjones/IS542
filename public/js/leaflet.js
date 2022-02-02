@@ -59,8 +59,8 @@ const MAP_PACKAGE = (function () {
 
     createWMSLayer = function (layernameUI) {
         // , wmsURL, variable, range, style // Temporary values for testing
-        let wmsURL = "https://thredds-jumbo.unidata.ucar.edu/thredds/wms/grib/NCEP/GFS/Global_0p25deg/Best";
-        let variable = "Categorical_Rain_surface";
+        let wmsURL = "http://chc-tethys.chc.ucsb.edu:8383/thredds/wms/test/chirps-v2.0.monthly.nc";
+        let variable = "precip";
         let range = "0:5";
         let style = "boxfill/rainbow";
         ///////////////////////////////

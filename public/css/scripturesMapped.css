@@ -6,57 +6,164 @@ p {
     color: white;
 }
 
+a {
+    color: #bf9595;
+}
+
+ul {
+    list-style-type: none;
+    color: white;
+    margin: 0px;
+    padding: 0px 15px 0px 15px;
+}
+
+li {
+    color: white;
+    margin: 10px;
+}
+
+button {
+    background-color: #001469;
+    border-color: #000a8c;
+    border-radius: 20px;
+    font-family: "Comic Sans MS";
+    font-size: 15pt;
+    color: mintcream;
+}
+
+.chapterheading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 0px 5px 0px;
+    color: white;
+}
+
+.divtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px 20px 0px;
+    color: white;
+}
+
 #main {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow-y: hidden;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    height: 65px;
+    width: 100%;
+}
+
+#mini-nav {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 65px;
+    width: 25%;
+    background-color: #1e2740;
+    color: white;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+    width: 75%;
+    background-color: #111f48;
+    color: white;
 }
 
 #secondary {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
-    overflow-y: hidden;
+    height: calc(100% - 65px);
 }
 
-#header {
+#nav-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 65px;
-    background-color: #7a5d37;
-    color: white;
+    flex-direction: column;
+    width: 25%;
 }
 
 #navigator {
-    height: 100%;
-    width: 25%;
-    background-color: #7a5d99;
+    height: calc(100% - 60px);
+    width: 100%;
+    background-color: #141418;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     overflow-y: scroll;
-    padding: 20px 0px 300px 0px;
+}
+
+#next-prev {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
 }
 
 #map {
-    height: 100%;
+    height: auto;
     width: 75%;
-    background-color: #7a5000;
 }
 
-.btn-volume {
-    width: 80%;
-    height: 50px;
-    margin-top: 30px;
+.nav-div {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn-book {
+.volume-btn {
     width: 80%;
+    height: auto;
     min-height: 50px;
     margin-top: 30px;
+}
+
+.book-btn {
+    width: 80%;
+    height: auto;
+    min-height: 50px;
+    margin-top: 30px;
+}
+
+.chapter-btn {
+    width: 80%;
+    height: auto;
+    min-height: 50px;
+    margin-top: 30px;
+}
+
+.nav-btn {
+    border-radius: 5px;
+    font-size: 9pt;
+    width: 33.33%;
+    height: auto;
+    padding: 5px;
+    margin: 0;
+}
+
+.nxt-prv-btn {
+    border-radius: 5px;
+    font-size: 12pt;
+    width: 40%;
+    height: 30px;
+    margin: 15px 5% 15px 5%;
+}
+
+.marker-position {
+    bottom: 30px;
+    left: 0;
+    position: relative;
 }

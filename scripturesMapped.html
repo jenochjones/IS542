@@ -16,27 +16,25 @@
 
 </head>
 
-<body onload="">
-
-  <div class="top-nav-bar">
-    <ul><a href="index.html">Home</a></ul>
-    <ul><a href="hw2.html">Home Work 2</a></ul>
-    <ul><a href="hw3.html">Home Work 3</a></ul>
-    <ul><a href="hw4.html">Home Work 4</a></ul>
-    <ul><a href="hw5.html">Home Work 5</a></ul>
-    <ul><a href="scripturesMapped.html">The Scriptures, Mapped</a></ul>
-    <ul><a href="finalproject.html">Final Project</a></ul>
-    <ul><a href="leaflet.html">Leaflet Map</a></ul>
-  </div>
+<body>
   <div id="main">
     <div id="header">
-      <h1>The Scriptures, Mapped</h1>
+      <div id="mini-nav">
+        <button id="nav-home-btn" class="nav-btn" onclick="Scriptures.changeHash('0')">Home</button>
+        <button id="nav-book-btn" class="nav-btn" data-hash="0" onclick="Scriptures.changeHash(this.dataset.hash)"></button>
+        <button id="nav-chap-btn" class="nav-btn" data-hash="0" onclick="Scriptures.changeHash(this.dataset.hash)"></button>
+      </div>
+      <div id="title"><h1>The Scriptures, Mapped</h1></div>
     </div>
     <div id="secondary">
-      <div id="navigator">
+      <div id="nav-container">
+        <div id="navigator"></div>
+        <div id="next-prev">
+          <button id="prev-btn" class="nxt-prv-btn" onclick="Scriptures.prvChapter()">Previous Chapter</button>
+          <button id="next-btn" class="nxt-prv-btn" onclick="Scriptures.nextChapter()">Next Chapter</button>
+        </div>
       </div>
-      <div id="map">
-      </div>
+        <div id="map"></div>
     </div>
   </div>
 
@@ -52,7 +50,7 @@
   }
 
   ready(function (){
-    Scriptures.init(() => { console.log('Initialized'); });
+    Scriptures.init(() => { Scriptures.onHashChanged(); });
     window.addEventListener("hashchange", Scriptures.onHashChanged);
   })
 </script>
