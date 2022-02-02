@@ -1,7 +1,7 @@
 let map;
 
 const MAP_PACKAGE = (function () {
-
+    "use-strict";
     let currentMarkers = [];
     let markersOnMap = [];
     /*---------------------------------------------------------------------
@@ -36,6 +36,11 @@ const MAP_PACKAGE = (function () {
             });
             map.setCenter(bounds.getCenter());
             map.fitBounds(bounds);
+
+            if (currentMarkers.length === 1) {
+                map.setZoom(15);
+            }
+
         } else {
             goHome();
         }
@@ -56,8 +61,10 @@ const MAP_PACKAGE = (function () {
             currentMarkers.push({
                 lat:parseFloat(matches[3]),
                 lng:parseFloat(matches[4]),
-                title:matches[2]
+                title:matches[2],
+                zoom:matches[9]
             });
+            console.log(matches[9])
         });
         removeDuplicateMarkers();
         addMarkersToMap();
@@ -72,20 +79,21 @@ const MAP_PACKAGE = (function () {
     removeDuplicateMarkers = function () {
         let sortedMarkers = [currentMarkers[0]];
 
-        sortedMarkers.forEach(marker => {
-            currentMarkers.forEach(marker2 => {
-                let newTitle;
-                if (Math.abs(marker.lat - marker2.lat) <= 0.00001  && Math.abs(marker.lng - marker2.lng) <= 0.00001) {
-                    if (marker.title === marker2.title) {
-                        newTitle = marker.title;
-                    } else {
-                        newTitle = `${marker.title} / ${marker2.title}`;
-                    }
-                    marker.title = newTitle;
-                } else {
-                    sortedMarkers.push(marker2);
+        currentMarkers.forEach(marker2 => {
+            let addToArray = true;
+            sortedMarkers.forEach(marker => {
+                if (Math.abs(marker.lat - marker2.lat) <= 0.0001  && Math.abs(marker.lng - marker2.lng) <= 0.0001) {
+
+                    if ( ! marker.title.includes(marker2.title)) {
+                            marker.title = `${marker.title} / ${marker2.title}`;
+                        }
+
+                    addToArray = false;
                 }
             });
+            if (addToArray) {
+                sortedMarkers.push(marker2);
+            }
         });
         currentMarkers = sortedMarkers;
     };
