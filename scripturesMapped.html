@@ -18,23 +18,25 @@
 
 <body>
   <div id="main">
-    <div id="header">
+    <div id="left-container">
       <div id="mini-nav">
         <button id="nav-home-btn" class="nav-btn" onclick="Scriptures.changeHash('0')">Home</button>
         <button id="nav-book-btn" class="nav-btn" data-hash="0" onclick="Scriptures.changeHash(this.dataset.hash)"></button>
         <button id="nav-chap-btn" class="nav-btn" data-hash="0" onclick="Scriptures.changeHash(this.dataset.hash)"></button>
       </div>
-      <div id="title"><h1>The Scriptures, Mapped</h1></div>
-    </div>
-    <div id="secondary">
       <div id="nav-container">
         <div id="navigator"></div>
         <div id="next-prev">
-          <button id="prev-btn" class="nxt-prv-btn" onclick="Scriptures.prvChapter()">Previous Chapter</button>
-          <button id="next-btn" class="nxt-prv-btn" onclick="Scriptures.nextChapter()">Next Chapter</button>
+          <button id="prev-btn" class="nav-btn" style="width: 50%" onclick="Scriptures.prvChapter()">Previous Chapter</button>
+          <button id="next-btn" class="nav-btn" style="width: 50%" onclick="Scriptures.nextChapter()">Next Chapter</button>
         </div>
       </div>
-        <div id="map"></div>
+    </div>
+    <div id="right-container">
+      <div id="header">
+        <div id="title"><h1>The Scriptures, Mapped</h1></div>
+      </div>
+      <div id="map"></div>
     </div>
   </div>
 

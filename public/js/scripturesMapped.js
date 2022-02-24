@@ -23,7 +23,7 @@ const MAP_PACKAGE = (function () {
                     label: {
                         text: marker.title,
                         fontFamily: "Comic Sans MS",
-                        fontSize: "20px",
+                        fontSize: "22px",
                         className: "marker-position"
                     },
                     map,
@@ -34,7 +34,7 @@ const MAP_PACKAGE = (function () {
                 markersOnMap.push(mapMarker);
                 bounds.extend({lat: marker.lat, lng: marker.lng});
             });
-            map.setCenter(bounds.getCenter());
+            map.panTo(bounds.getCenter());
             map.fitBounds(bounds);
 
             if (currentMarkers.length === 1) {
@@ -72,7 +72,7 @@ const MAP_PACKAGE = (function () {
 
     goHome = function () {
         clearMap();
-        map.setCenter({lat: 31.7683, lng: 35.2137});
+        map.panTo({lat: 31.7683, lng: 35.2137});
         map.setZoom(8);
     };
 
@@ -149,31 +149,22 @@ const Scriptures = (function () {
      */
 
     ajax = function (url, successCallback, failureCallback, skipJSONParse = false) {
-        let request = new XMLHttpRequest();
-
-        request.open(REQUEST_GET, url, true);
-        request.onload = function () {
-
-            if (this.status >= REQUEST_STATUS_OK && this.status < REQUEST_STATUS_ERROR) {
-                // Success!
-
-                let data = (skipJSONParse ?
-                    this.response :
-                    JSON.parse(this.response)
-                );
-
-                if (typeof successCallback === "function") {
-                    successCallback(data);
-                }
-            } else {
-                if (typeof failureCallback === "function") {
-                    failureCallback(request);
+        fetch(url)
+        .then(function (response) {
+            if (response.ok) {
+                if (skipJSONParse) {
+                    return response.text();
+                } else {
+                    return response.json();
                 }
             }
-        };
-
-        request.onerror = failureCallback;
-        request.send();
+        })
+        .then(function (data) {
+            successCallback(data);
+        })
+        .catch(function (error) {
+            failureCallback(error);
+        });
     };
 
     changeHash = function (newHash) {
@@ -237,7 +228,7 @@ const Scriptures = (function () {
     };
 
     htmlButton = function (content, id, btnclass, hash) {
-        return `<div class="nav-div"><button id="${id}" class="${btnclass}" onclick="Scriptures.changeHash(${hash})">${content}</button></div>`;
+        return `<div class="nav-div"><button id="${id}" class="${btnclass} button-round" onclick="Scriptures.changeHash(${hash})">${content}</button></div>`;
     };
 
     init = function (callback) {
@@ -474,7 +465,7 @@ function initMap() {
 };
 
 function showLocation(geotagId, placename, latitude, longitude, viewLatitude, viewLongitude, viewTilt, viewRoll, viewAltitude, viewHeading) {
-    map.setCenter({lat:latitude, lng:longitude});
+    map.panTo({lat:latitude, lng:longitude});
     map.setZoom(15);
 };
 

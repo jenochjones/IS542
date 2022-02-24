@@ -1,5 +1,7 @@
 body {
     background-color: #252736;
+    height: 100%;
+    witdth: 100%;
 }
 
 p {
@@ -22,13 +24,20 @@ li {
     margin: 10px;
 }
 
+label {
+    color:black;
+}
+
 button {
     background-color: #001469;
     border-color: #000a8c;
-    border-radius: 20px;
     font-family: "Comic Sans MS";
     font-size: 15pt;
     color: mintcream;
+}
+
+.button-round {
+    border-radius: 20px;
 }
 
 .chapterheading {
@@ -50,15 +59,30 @@ button {
 
 #main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#left-container {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+}
+
+#right-container {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
     height: 100%;
 }
 
 #header {
     display: flex;
     flex-direction: row;
-    height: 65px;
+    height: 4em;
     width: 100%;
 }
 
@@ -66,8 +90,8 @@ button {
     display: flex;
     justify-content: left;
     align-items: center;
-    height: 65px;
-    width: 25%;
+    min-height: 4em;
+    width: 100%;
     background-color: #1e2740;
     color: white;
 }
@@ -76,27 +100,21 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 65px;
-    width: 75%;
+    height: 4em;
+    width: 100%;
     background-color: #111f48;
     color: white;
-}
-
-#secondary {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: calc(100% - 65px);
 }
 
 #nav-container {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 100%;
+    height: calc(100% - 4em);
 }
 
 #navigator {
-    height: calc(100% - 60px);
+    height: calc(100% - 4em);
     width: 100%;
     background-color: #141418;
     display: flex;
@@ -112,8 +130,8 @@ button {
 }
 
 #map {
-    height: auto;
-    width: 75%;
+    height: 100%;
+    width: 100%;
 }
 
 .nav-div {
@@ -146,20 +164,17 @@ button {
 }
 
 .nav-btn {
-    border-radius: 5px;
     font-size: 9pt;
     width: 33.33%;
-    height: auto;
-    padding: 5px;
+    height: 100%;
     margin: 0;
+    background-color: #1e2740;
+    border-color: #1e2740;
+    border-style: none;
 }
 
-.nxt-prv-btn {
-    border-radius: 5px;
-    font-size: 12pt;
-    width: 40%;
-    height: 30px;
-    margin: 15px 5% 15px 5%;
+.nav-btn:hover {
+    background-color: #2b354f;;
 }
 
 .marker-position {
@@ -167,3 +182,39 @@ button {
     left: 0;
     position: relative;
 }
+
+@media screen and (min-width: 120em) {
+    #left-container {
+        width: 30em;
+    }
+    #right-container {
+        width: calc(100% - 30em);
+    }
+}
+
+@media only screen and (max-width: 80em) {
+    #left-container {
+        width: 20em;
+    }
+    #right-container {
+        width: calc(100% - 20em);
+    }
+}
+
+@media only screen and (max-width: 48em) {
+    #main{
+        flex-direction: column-reverse;
+    }
+    #left-container {
+        width: 100%;
+        height: 40%;
+    }
+    #right-container {
+        width: 100%;
+        height: 60%;
+    }
+    h1 {
+        font-size: 15pt;
+    }
+}
+
