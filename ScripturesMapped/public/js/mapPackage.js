@@ -16,15 +16,15 @@ addMarkersToMap = function () {
         let iconURL;
         const volume = parseInt(location.hash.slice(1).split(":")[0]);
         if (volume === 1) {
-            iconURL = "../public/images/tencommandments.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kindpng.com%2Fimgv%2FhimmibR_ten-commandments-png-transparent-cartoons-ten-commandments-transparent%2F&psig=AOvVaw3-AuoXTOIJVHGS5M0w0PgF&ust=1646405965873000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODTjaiaqvYCFQAAAAAdAAAAABAD
+            iconURL = "../IS542/ScripturesMapped/public/images/tencommandments.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kindpng.com%2Fimgv%2FhimmibR_ten-commandments-png-transparent-cartoons-ten-commandments-transparent%2F&psig=AOvVaw3-AuoXTOIJVHGS5M0w0PgF&ust=1646405965873000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODTjaiaqvYCFQAAAAAdAAAAABAD
         } else if (volume === 2) {
-            iconURL = "../public/images/breadandfish.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Ffavpng.com%2Fpng_view%2Ffish-balls-feeding-the-multitude-loaf-fish-clip-art-png%2FknmAfqiu&psig=AOvVaw33tKyD-BBVamX7dAXmci69&ust=1646405325280000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLi0nPuXqvYCFQAAAAAdAAAAABAD
+            iconURL = "../IS542/ScripturesMapped/public/images/breadandfish.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Ffavpng.com%2Fpng_view%2Ffish-balls-feeding-the-multitude-loaf-fish-clip-art-png%2FknmAfqiu&psig=AOvVaw33tKyD-BBVamX7dAXmci69&ust=1646405325280000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLi0nPuXqvYCFQAAAAAdAAAAABAD
         } else if (volume === 3) {
-            iconURL = "../public/images/goldplates.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinclipart.com%2Fpindetail%2FiiTTTRm_golden-plates-lds-lds-gold-plates-clip-art%2F&psig=AOvVaw1kSlJFyyEsb5JagRgGGe7C&ust=1646405944306000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCFwJ6aqvYCFQAAAAAdAAAAABAD
+            iconURL = "../IS542/ScripturesMapped/public/images/goldplates.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinclipart.com%2Fpindetail%2FiiTTTRm_golden-plates-lds-lds-gold-plates-clip-art%2F&psig=AOvVaw1kSlJFyyEsb5JagRgGGe7C&ust=1646405944306000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCFwJ6aqvYCFQAAAAAdAAAAABAD
         } else if (volume === 4) {
-            iconURL = "../public/images/wagonwheel.png"; //https://www.google.com/url?sa=i&url=http%3A%2F%2Fclipart-library.com%2Fclip-art%2F63-635068_wheel-transparent-background-picture-clip-art-wagon-wheel.htm&psig=AOvVaw0PV-7uJ8Vl_g9Ihw4s2z4V&ust=1646405988712000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNC717OaqvYCFQAAAAAdAAAAABAD
+            iconURL = "../IS542/ScripturesMapped/public/images/wagonwheel.png"; //https://www.google.com/url?sa=i&url=http%3A%2F%2Fclipart-library.com%2Fclip-art%2F63-635068_wheel-transparent-background-picture-clip-art-wagon-wheel.htm&psig=AOvVaw0PV-7uJ8Vl_g9Ihw4s2z4V&ust=1646405988712000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNC717OaqvYCFQAAAAAdAAAAABAD
         } else if (volume === 5) {
-            iconURL = "../public/images/scroll.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fclipart.world%2Fscroll-clipart%2Fvintage-scroll-png-transparent%2F&psig=AOvVaw3GYxjMyt8jGOq21VYC8LmG&ust=1646405871797000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJiS-YCaqvYCFQAAAAAdAAAAABAD
+            iconURL = "../IS542/ScripturesMapped/public/images/scroll.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fclipart.world%2Fscroll-clipart%2Fvintage-scroll-png-transparent%2F&psig=AOvVaw3GYxjMyt8jGOq21VYC8LmG&ust=1646405871797000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJiS-YCaqvYCFQAAAAAdAAAAABAD
         }
 
         currentMarkers.forEach(marker => {
