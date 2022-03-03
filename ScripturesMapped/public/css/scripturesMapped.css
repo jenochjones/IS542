@@ -6,15 +6,13 @@ html body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: Georgia, serif;
 }
 
 b {
     color: white;
     padding: 1em;
-}
-
-a {
-    text-decoration: none;
+    font-family: Georgia, serif;
 }
 
 label {
@@ -23,16 +21,19 @@ label {
 
 h2 {
   color: white;
-  font-family: "American Typewriter";
+  font-family: Georgia, serif;
   font-size: 15pt;
 }
 
 p {
     color: white;
+    font-family: Georgia, serif;
 }
 
 a {
     color: #bf9595;
+    font-family: Georgia, serif;
+    text-decoration: none;
 }
 
 ul {
@@ -40,21 +41,24 @@ ul {
     color: white;
     margin: 0;
     padding: 0 1.2em;
+    font-family: Georgia, serif;
 }
 
 li {
     color: white;
     margin: 1em;
+    font-family: Georgia, serif;
 }
 
 label {
     color:black;
+    font-family: Georgia, serif;
 }
 
 button {
     background-color: #001469;
     border-color: #000a8c;
-    font-family: "Comic Sans MS";
+    font-family: Georgia, serif;;
     font-size: 15pt;
     color: mintcream;
 }

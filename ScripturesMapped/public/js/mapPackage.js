@@ -18,7 +18,7 @@ addMarkersToMap = function () {
         if (volume === 1) {
             iconURL = "../public/images/tencommandments.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kindpng.com%2Fimgv%2FhimmibR_ten-commandments-png-transparent-cartoons-ten-commandments-transparent%2F&psig=AOvVaw3-AuoXTOIJVHGS5M0w0PgF&ust=1646405965873000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODTjaiaqvYCFQAAAAAdAAAAABAD
         } else if (volume === 2) {
-            iconURL = "../public/images/breadandfish.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Ffavpng.com%2Fpng_view%2Ffish-balls-feeding-the-multitude-loaf-fish-clip-art-png%2FknmAfqiu&psig=AOvVaw33tKyD-BBVamX7dAXmci69&ust=1646405325280000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLi0nPuXqvYCFQAAAAAdAAAAABAD
+            iconURL = "../public/images/cross.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinclipart.com%2Fpindetail%2FhJThhR_silhouette-crosses-clipart%2F&psig=AOvVaw0x1r_wBbkXweTgWaVpPwnR&ust=1646435174405000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMiEgpKHq_YCFQAAAAAdAAAAABAD
         } else if (volume === 3) {
             iconURL = "../public/images/goldplates.png"; //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinclipart.com%2Fpindetail%2FiiTTTRm_golden-plates-lds-lds-gold-plates-clip-art%2F&psig=AOvVaw1kSlJFyyEsb5JagRgGGe7C&ust=1646405944306000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJCFwJ6aqvYCFQAAAAAdAAAAABAD
         } else if (volume === 4) {
