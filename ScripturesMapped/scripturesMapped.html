@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JEJ</title>
+  <link rel="icon" type="image/x-icon" href="/public/images/favicon.png">
+  <meta name="description" content="The Standard Works, Mapped">
+  <meta name="author" content="J Enoch Jones">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"/>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="public/css/scripturesMapped.css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="public/vendor/jquery-3.6.0.min.js"></script>
+  <script type="module" src="public/js/eventListenersPackage.js"></script>
+  <script type="module" src="public/js/htmlPackage.js"></script>
+  <script type="module" src="public/js/mapPackage.js"></script>
+  <script type="module" src="public/js/navigationPackage.js"></script>
+  <script type="module" src="public/js/runOnLoad.js"></script>
+  <script type="module" src="public/js/navigationPackage.js"></script>
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="left-container">
+      <div id="mini-nav">
+        <button id="nav-home-btn" class="nav-btn upper" data-hash="0">Home</button>
+        <button id="nav-book-btn" class="nav-btn upper" data-hash="0"></button>
+        <button id="nav-chap-btn" class="nav-btn upper" data-hash="0"></button>
+      </div>
+      <div id="nav-container">
+        <div id="navigator-wrapper">
+          <div id="upper-navigator" class="navigator-div slide-up"></div>
+          <div id="side-navigator" class="navigator-div slide-side"></div>
+          <div id="navigator" class="navigator-div slide-up slide-side"></div>
+        </div>
+        <div id="next-prev">
+          <button id="prev-btn" class="nav-btn" style="width: 50%; display: none">Previous Chapter</button>
+          <button id="next-btn" class="nav-btn" style="width: 50%; display: none">Next Chapter</button>
+        </div>
+      </div>
+    </div>
+    <div id="right-container">
+      <div id="header">
+        <div id="title"><h1>The Scriptures, Mapped</h1></div>
+      </div>
+      <div id="map"></div>
+    </div>
+  </div>
+
+</body>
+
+<script type="module">
+  import showLocation from "./public/js/runOnLoad.js";
+  window.showLocation = showLocation;
+</script>
+
+</html>

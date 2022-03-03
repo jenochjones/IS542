@@ -112,9 +112,6 @@ const Scriptures = (function () {
      */
     const BOTTOM_PADDING = "<br /><br />";
     const DIV_SCRIPTURES_NAVIGATOR = "navigator";
-    const REQUEST_GET = "GET";
-    const REQUEST_STATUS_OK = 200;
-    const REQUEST_STATUS_ERROR = 400;
     const URL_BASE = "https://scriptures.byu.edu/";
     const URL_BOOKS = `${URL_BASE}mapscrip/model/books.php`;
     const URL_SCRIPTURES = `${URL_BASE}mapscrip/mapgetscrip.php`;
@@ -132,6 +129,7 @@ const Scriptures = (function () {
     let bookChapterValid;
     let changeHash;
     let cashBooks;
+    let crossFade;
     let encodedScripturesURLParameters;
     let getScripturesCallback;
     let getScripturesFailure;
@@ -187,6 +185,13 @@ const Scriptures = (function () {
         }
     };
 
+    crossFade = function (divId, htmlString) {
+        $(`#${divId}`).stop(true).fadeOut(500, function () {
+            $(`#${divId}`).html(htmlString);
+        });
+        $(`#${divId}`).fadeIn(500);
+    };
+
     bookChapterValid = function (bookId, chapter) {
         let book = books[bookId];
 
@@ -218,13 +223,21 @@ const Scriptures = (function () {
         }
     };
 
-    getScripturesCallback = function (chapterHTML) {
-        document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML = chapterHTML;
+    getScripturesCallback = function (chapterHTML, animationType) {
+        console.log('added scriptures')
+        if (animationType === "left") {
+            slideLeft(DIV_SCRIPTURES_NAVIGATOR, chapterHTML);
+        } else if (animationType === "right") {
+            slideRight(DIV_SCRIPTURES_NAVIGATOR, chapterHTML);
+        } else {
+            crossFade(DIV_SCRIPTURES_NAVIGATOR, chapterHTML);
+        }
         MAP_PACKAGE.createAllMarkers();
     };
 
     getScripturesFailure = function () {
-        document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML = "Unable to retrieve chapter contents";
+        crossFade(DIV_SCRIPTURES_NAVIGATOR, "Unable to retrieve chapter contents")
+        //document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML = "Unable to retrieve chapter contents";
     };
 
     htmlButton = function (content, id, btnclass, hash) {
@@ -257,19 +270,20 @@ const Scriptures = (function () {
     navigateHome = function () {
         let htmlString = "";
 
-        document.getElementById("nav-book-btn").style.display = "none";
-        document.getElementById("nav-chap-btn").style.display = "none";
-        document.getElementById("prev-btn").style.display = "none";
-        document.getElementById("next-btn").style.display = "none";
+        $("#nav-book-btn").fadeOut(500);
+        $("#nav-chap-btn").fadeOut(500);
+        $("#prev-btn").fadeOut(500);
+        $("#next-btn").fadeOut(500);
 
-        location.hash = 0;
+        location.hash = "0";
 
         volumes.forEach(volume => {
             htmlString += htmlButton(volume.fullName, volume.id, "volume-btn", `${volume.id}`);
         });
 
         htmlString += BOTTOM_PADDING;
-        document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML = htmlString;
+        crossFade(DIV_SCRIPTURES_NAVIGATOR, htmlString);
+        //document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML = htmlString;
 
         MAP_PACKAGE.goHome();
     };
@@ -279,14 +293,14 @@ const Scriptures = (function () {
         let htmlString = "";
         let listChapters;
 
-        document.getElementById("nav-book-btn").style.display = "block";
+        $("#nav-book-btn").fadeIn(500);
         document.getElementById("nav-book-btn").innerText = volumes[selectedBook.parentBookId - 1].fullName;
         document.getElementById("nav-book-btn").dataset.hash = volumes[selectedBook.parentBookId - 1].id;
-        document.getElementById("nav-chap-btn").style.display = "block";
+        $("#nav-chap-btn").fadeIn(500);
         document.getElementById("nav-chap-btn").innerText = selectedBook.fullName;
         document.getElementById("nav-chap-btn").dataset.hash = `${volumes[selectedBook.parentBookId - 1].id}:${selectedBook.id}`;
-        document.getElementById("prev-btn").style.display = "none";
-        document.getElementById("next-btn").style.display = "none";
+        $("#prev-btn").fadeOut(500);
+        $("#next-btn").fadeOut(500);
 
         listChapters = function (numChapters, iterator) {
             if (iterator <= numChapters) {
@@ -301,7 +315,7 @@ const Scriptures = (function () {
         } else {
             listChapters(selectedBook.numChapters, 1);
             htmlString += BOTTOM_PADDING;
-            document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML = htmlString;
+            crossFade(DIV_SCRIPTURES_NAVIGATOR, htmlString);
         }
     };
 
@@ -311,8 +325,8 @@ const Scriptures = (function () {
 
         ajax(encodedScripturesURLParameters(bookId,chapter), getScripturesCallback, getScripturesFailure, true);
         document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML += BOTTOM_PADDING;
-        document.getElementById("prev-btn").style.display = "block";
-        document.getElementById("next-btn").style.display = "block";
+        $("#prev-btn").fadeIn(500);
+        $("#next-btn").fadeIn(500);
         document.getElementById("nav-book-btn").innerText = volume.fullName;
         document.getElementById("nav-book-btn").dataset.hash = `${volume.id}`;
         document.getElementById("nav-chap-btn").innerText = book.fullName;
@@ -324,19 +338,19 @@ const Scriptures = (function () {
         let allBooks = volume.books;
         let htmlString = "";
 
-        document.getElementById("nav-book-btn").style.display = "block";
+        $("#nav-book-btn").fadeIn(500);
         document.getElementById("nav-book-btn").innerText = volume.fullName;
         document.getElementById("nav-book-btn").dataset.hash = volume.id;
-        document.getElementById("nav-chap-btn").style.display = "none";
-        document.getElementById("prev-btn").style.display = "none";
-        document.getElementById("next-btn").style.display = "none";
+        $("#nav-chap-btn").fadeOut(500);
+        $("#prev-btn").fadeOut(500);
+        $("#next-btn").fadeOut(500);
 
         allBooks.forEach(book => {
             htmlString += htmlButton(book.fullName, book.id, "book-btn", `'${book.parentBookId}:${book.id}'`);
         });
 
         htmlString += BOTTOM_PADDING;
-        document.getElementById(DIV_SCRIPTURES_NAVIGATOR).innerHTML = htmlString;
+        crossFade(DIV_SCRIPTURES_NAVIGATOR, htmlString);
     };
 
     nextChapter = function () {

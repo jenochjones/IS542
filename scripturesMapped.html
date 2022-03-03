@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="public/css/scripturesMapped.css">
 
+  <script type="text/javascript" src="public/vendor/jquery-3.6.0.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAth9fKCMU_ctacq7mcoN2ToGMq2BJqlIY&callback=initMap&v=weekly" async></script>
   <script type="text/javascript" src="public/js/scripturesMapped.js"></script>
 
@@ -27,8 +28,8 @@
       <div id="nav-container">
         <div id="navigator"></div>
         <div id="next-prev">
-          <button id="prev-btn" class="nav-btn" style="width: 50%" onclick="Scriptures.prvChapter()">Previous Chapter</button>
-          <button id="next-btn" class="nav-btn" style="width: 50%" onclick="Scriptures.nextChapter()">Next Chapter</button>
+          <button id="prev-btn" class="nav-btn" style="width: 50%; display: none" onclick="Scriptures.prvChapter()">Previous Chapter</button>
+          <button id="next-btn" class="nav-btn" style="width: 50%; display: none" onclick="Scriptures.nextChapter()">Next Chapter</button>
         </div>
       </div>
     </div>
@@ -52,7 +53,7 @@
   }
 
   ready(function (){
-    Scriptures.init(() => { Scriptures.onHashChanged(); });
+    Scriptures.init(() => { Scriptures.onHashChanged(true); });
     window.addEventListener("hashchange", Scriptures.onHashChanged);
   })
 </script>

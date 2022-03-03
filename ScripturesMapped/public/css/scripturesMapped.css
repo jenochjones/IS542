@@ -1,7 +1,30 @@
-body {
+html body {
     background-color: #252736;
-    height: 100%;
-    witdth: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+b {
+    color: white;
+    padding: 1em;
+}
+
+a {
+    text-decoration: none;
+}
+
+label {
+    color: white;
+}
+
+h2 {
+  color: white;
+  font-family: "American Typewriter";
+  font-size: 15pt;
 }
 
 p {
@@ -15,13 +38,13 @@ a {
 ul {
     list-style-type: none;
     color: white;
-    margin: 0px;
-    padding: 0px 15px 0px 15px;
+    margin: 0;
+    padding: 0 1.2em;
 }
 
 li {
     color: white;
-    margin: 10px;
+    margin: 1em;
 }
 
 label {
@@ -37,7 +60,11 @@ button {
 }
 
 .button-round {
-    border-radius: 20px;
+    display: inline;
+    width: 80%;
+    padding: 0.6em;
+    margin: 0.2em;
+    border-radius: 1em;
 }
 
 .chapterheading {
@@ -45,7 +72,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 25px 0px 5px 0px;
+    padding: 3em 0 0.5em 0;
     color: white;
 }
 
@@ -53,7 +80,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 0px 20px 0px;
+    padding: 0 0 1.5em 0;
     color: white;
 }
 
@@ -114,18 +141,46 @@ button {
     background-color: #141418;
 }
 
+#navigator-wrapper {
+    position: relative;
+    height: calc(100% - 4em);
+    width: 100%;
+    background-color: #141418;
+    overflow: hidden;
+}
+
 #navigator {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#upper-navigator {
+    position: absolute;
+    left: 0;
+    top: -110%;
+}
+
+#side-navigator {
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+
+.navigator-div {
     height: calc(100% - 4em);
     width: 100%;
     background-color: #141418;
     display: flex;
     flex-direction: column;
+    align-items: center;
     overflow-y: scroll;
+    padding: 2em 0;
 }
 
 #next-prev {
     width: 100%;
-    height: 60px;
+    height: 4em;
     display: flex;
     flex-direction: row;
     background-color: #1e2740;
@@ -134,35 +189,6 @@ button {
 #map {
     height: 100%;
     width: 100%;
-}
-
-.nav-div {
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.volume-btn {
-    width: 80%;
-    height: auto;
-    min-height: 50px;
-    margin-top: 30px;
-}
-
-.book-btn {
-    width: 80%;
-    height: auto;
-    min-height: 50px;
-    margin-top: 30px;
-}
-
-.chapter-btn {
-    width: 80%;
-    height: auto;
-    min-height: 50px;
-    margin-top: 30px;
 }
 
 .nav-btn {
@@ -179,10 +205,16 @@ button {
     background-color: #2b354f;;
 }
 
-.marker-position {
-    bottom: 30px;
-    left: 0;
-    position: relative;
+.marker-labels {
+    background-color: rgba(250, 250, 250, 0.5);
+    margin: 3em;
+    border: none;
+    position: absolute;
+    top: -4.8em;
+    left: -2.9em;
+    color: black;
+    font-size: 15pt;
+    font-font: Georgia, serif;
 }
 
 @media screen and (min-width: 120em) {
